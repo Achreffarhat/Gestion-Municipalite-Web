@@ -1,0 +1,10 @@
+{% extends 'front/index.html.twig' %}
+
+
+{% block body %}
+    <h1>Create new RendezVous</h1>
+
+    {{ include('rendez_vous/_form.html.twig') }}
+
+    <a class="btn btn-success" href="{{ path('app_rendez_vous_index') }}">back to list</a>
+{% endblock %}

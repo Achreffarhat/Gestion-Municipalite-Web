@@ -1,0 +1,9 @@
+{% extends 'baseback.html.twig'%}
+
+
+{% block body %}
+<h1> Stock Non Disponbile </h1> 
+<p> le Stock est insufisant pour confimer cette reservation </p>  
+<a class="btn btn-dark" href="{{ path('app_reservation_index') }}">back to list</a>
+<a class="btn btn-dark" href="{{ path('app_outils_new') }}">Add outils</a>
+{% endblock %}

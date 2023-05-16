@@ -1,0 +1,12 @@
+{% extends 'baseback.html.twig'%}
+{% block title %} New Outils {% endblock %}
+
+{% block body %}
+    <h1>Create new Outils</h1>
+
+    {{ include('outils/_form.html.twig') }}
+
+    <a class="btn" href="{{ path('app_outils_index') }}">back to list</a>
+
+    
+{% endblock %}

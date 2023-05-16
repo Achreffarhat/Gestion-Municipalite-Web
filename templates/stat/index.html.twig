@@ -1,0 +1,37 @@
+{% block body %}
+    <div class="container">
+        <h1>Marque</h1>
+
+        <br><br><br>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Marque</h2>
+                <canvas id="marqChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var marqData = {{ marqData|raw }};
+        var prixData = {{ prixData|raw }};
+
+        var tempCtx = document.getElementById('marqChart').getContext('2d');
+        var marqChart = new Chart(tempCtx, {
+            type: 'line',
+            data: {
+                labels: prixData,
+                datasets: [{
+                    label: 'Marque',
+                    data: marqData,
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            },
+            options: {}
+        });
+
+      {% endblock %}  
+    </script>

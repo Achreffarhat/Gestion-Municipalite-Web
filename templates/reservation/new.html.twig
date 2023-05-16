@@ -1,0 +1,10 @@
+{% extends 'employefront.html.twig'%}
+{% block title%}New Reservation {%endblock%}
+
+{% block body %}
+    <h1>Create new Reservation</h1>
+
+    {{ include('reservation/_form.html.twig') }}
+
+    <a class="btn btn-dark" href="{{ path('app_outils_indexfront') }}">back to list</a>
+{% endblock %}

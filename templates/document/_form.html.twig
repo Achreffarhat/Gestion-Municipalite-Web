@@ -1,0 +1,27 @@
+<div class="container"> 
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+<div class="form-group"> 
+
+
+    {{ form_label(form.name) }}
+    {{ form_widget(form.name,{'attr':{'classe':'form-control'}}) }}
+    {% if form_errors(form.name) is not empty %}
+    <div class="alert alert-danger">
+    {{ form_errors(form.name) }}
+</div>
+{% endif %}
+</div>
+<div class="form-group"> 
+
+
+    {{ form_label(form.imageFile) }}
+    {{ form_widget(form.imageFile,{'attr':{'classe':'form-control'}}) }}
+    {% if form_errors(form.imageFile) is not empty %}
+    <div class="alert alert-danger">
+    {{ form_errors(form.imageFile) }}
+</div>
+{% endif %}
+</div>
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+</div>

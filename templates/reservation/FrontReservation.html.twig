@@ -1,0 +1,45 @@
+{% extends 'employefront.html.twig'%}
+{% block title%} Reservation {%endblock%}
+
+{% block body %}
+    <h1>Vos Reservation</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>Date_debut</th>
+                <th>Date_fin</th>
+                <th>Quantite</th>
+                <th>Nom Outil</th>
+                <th> Image </th>
+                <th>etat</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                
+                <td>{{ reservation.dateDebut ? reservation.dateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation.dateFin ? reservation.dateFin|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation.quantite }}</td>
+                 <td>{{ reservation.outil.labelOutils }}</td>
+                 <td> 
+                    <div class="position-relative">
+									<img class="card-img-top" style="height: 200px; width:300px;" src="{{asset('uploads/') ~ reservation.outil.image}}" alt="Card image cap">
+									
+								</div></td> 
+                 <td>{{ reservation.etat }}</td>
+              
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('app_reservation_new') }}">Create new</a> #}
+{% endblock %}

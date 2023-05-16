@@ -1,0 +1,48 @@
+
+{% block head %}
+<style>
+h1 {
+	  font-size: 2rem;
+	  font-weight: bold;
+	  margin-bottom: 1rem;
+      position: center;
+	}
+/* Style for the main container */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Style for the paragraphs */
+p {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+/* Style for the link */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+ /* Style for the page title */
+	
+</style>
+<center><img src="{{ asset('img/header.jpg') }}" alt="Header Image" class="img-fluid" height="120px"></center>
+<center><h1>E-mail de réinitialisation du mot de passe envoyé</h1></center>
+{% endblock %}
+
+
+{% block body %}
+   
+    <p>
+       Si un compte correspondant à votre adresse e-mail existe, un e-mail vient d'être envoyé contenant un lien que vous pouvez utiliser pour réinitialiser votre mot de passe.
+        Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+    </p>
+    <p>Si vous ne recevez pas d'e-mail, veuillez vérifier votre dossier spam ou <a href="{{ path('app_forgot_password_request') }}">essayer à nouveau</a>.</p>
+{% endblock %}

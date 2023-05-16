@@ -1,0 +1,18 @@
+
+{% extends 'employefront.html.twig' %}
+
+
+{% block body %}
+<br>
+<br><br>
+<center>
+    <h1>Ajouter une Vehicule</h1>
+    </center>
+    <br><br>
+
+    {{ include('vehicule/_form.html.twig') }}
+    <center>
+<br>
+    <a class="btn btn-primary" href="{{ path('app_vehicule_index') }}">Retour a la liste</a>
+    <center>
+{% endblock %}

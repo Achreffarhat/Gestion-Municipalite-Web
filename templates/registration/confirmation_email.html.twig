@@ -1,0 +1,40 @@
+<head>
+	<style>
+		/* Style pour le titre */
+		h1 {
+			font-size: 24px;
+			font-weight: bold;
+			margin: 0;
+			padding: 0;
+		}
+
+		/* Style pour les paragraphes */
+		p {
+			font-size: 16px;
+			line-height: 1.5;
+			margin: 10px 0;
+			padding: 0;
+		}
+
+		/* Style pour les liens */
+		a {
+			color: #007bff;
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+	<h1>Municipalite de tunis</h1>
+
+	<p>
+		Veuillez confirmer votre adresse e-mail en cliquant sur le lien suivant :
+		<br><br>
+		<a href="{{ signedUrl }}">Confirmer mon e-mail</a>.
+			    Ce lien expirera dans
+		{{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+	</p>
+
+	<p>
+		Cheers!
+	</p>
+</body>

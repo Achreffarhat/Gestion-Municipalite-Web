@@ -1,0 +1,24 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Edit Type{% endblock %}
+
+{% block body %}
+   
+
+       
+<br>
+<br>
+<br>
+<br>
+<center>
+<h1>Modifier Type Reclamation</h1>
+</center>
+<br>
+<br>
+
+    {{ include('type/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a class="btn btn-danger" href="{{ path('app_type_index') }}"> list</a>
+
+    {{ include('type/_delete_form.html.twig') }}
+{% endblock %}

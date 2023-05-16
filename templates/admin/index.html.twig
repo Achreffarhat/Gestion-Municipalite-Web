@@ -1,0 +1,91 @@
+{% block title %}{% endblock %}
+{% block head %}
+<style>
+	.example-wrapper {
+	  background-color: #F5F5F5;
+	  border: 1px solid #CCC;
+	  padding: 20px;
+	  margin: 20px auto;
+	  max-width: 800px;
+	  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	}
+	
+	.example-wrapper h1 {
+	  font-size: 28px;
+	  margin-bottom: 20px;
+	}
+	
+	.example-wrapper table {
+	  width: 100%;
+	  border-collapse: collapse;
+	  margin-bottom: 20px;
+	}
+	
+	.example-wrapper th, .example-wrapper td {
+	  padding: 10px;
+	  text-align: left;
+	  border-bottom: 1px solid #CCC;
+	}
+	
+	.example-wrapper th {
+	  font-weight: bold;
+	}
+	
+	.example-wrapper a {
+	  display: inline-block;
+	  padding: 10px 20px;
+	  background-color: #007bff;
+	  color: #FFF;
+	  border-radius: 5px;
+	  text-decoration: none;
+	}
+	
+	.example-wrapper a:hover {
+	  background-color: #0069d9;
+	}
+</style>
+<center><img src="{{ asset('img/header.jpg') }}" alt="Header Image" class="img-fluid" height="120px"></center>
+{% endblock %}
+{% block body %}
+
+	<div class="example-wrapper">
+		<h1>Profil
+			{{ app.user.nomUtil }}</h1>
+		<br>
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ app.user.id }}</td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td>{{ app.user.email }}</td>
+				</tr>
+				<tr>
+					<th>Roles</th>
+					<td>{{ app.user.roles ? app.user.roles|json_encode : '' }}</td>
+				</tr>
+
+				<tr>
+					<th>Nom_Util</th>
+					<td>{{ app.user.nomUtil }}</td>
+				</tr>
+				<tr>
+					<th>Prenom_Util</th>
+					<td>{{ app.user.prenomUtil }}</td>
+				</tr>
+				<tr>
+					<th>Tel</th>
+					<td>{{ app.user.tel }}</td>
+				</tr>
+				<tr>
+					<th>Adresse</th>
+					<td>{{ app.user.adresse }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<a class="btn btn-Danger" href="{{ path('app_logout') }}">Logout</a>
+		<a href="{{ path('app_user_edit', {'id': app.user.id}) }}" class="btn btn-secondary">edit</a>
+		</div> 
+	{% endblock %}

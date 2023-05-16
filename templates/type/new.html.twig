@@ -1,0 +1,21 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}New Type{% endblock %}
+
+{% block body %}
+  
+       
+<br>
+<br>
+<br>
+<br>
+<center>
+<h1>Ajouter Un Type Reclamations</h1>
+</center>
+<br>
+<br>
+
+    {{ include('type/_form.html.twig') }}
+
+    <a class="btn btn-danger" href="{{ path('app_type_index') }}">list Type </a>
+{% endblock %}

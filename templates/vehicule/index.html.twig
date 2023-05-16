@@ -1,0 +1,61 @@
+{% extends 'employefront.html.twig' %}
+
+{% block body %}
+	<br>
+
+	<center>
+		<h1>Liste Des Vehicules</h1>
+	</center>
+	<br>
+	<br>
+	<tr>
+		<td>
+			<a class="btn btn-sm btn-primary" href="{{ path('stats') }}">Statisqtiques</a>
+		</td>
+		<td>
+			<a class="btn btn-sm btn-primary" href="{{ path('app_map') }}">Maps</a>
+		</td>
+	</tr>
+	<table class="table">
+
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Marque</th>
+				<th>Disponible</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for vehicule in vehicules %}
+				<tr>
+					<td>{{ vehicule.id }}</td>
+					<td>{{ vehicule.marque }}</td>
+					<td>{{ vehicule.disponible ? 'Yes' : 'No' }}</td>
+					<td>
+						<a class="btn btn-sm btn-success" href="{{ path('app_vehicule_show', {'id': vehicule.id}) }}">Afficher</a>
+						<a class="btn btn-sm btn-danger" href="{{ path('app_vehicule_edit', {'id': vehicule.id}) }}">Modifier</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="4">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a class="btn btn-primary" href="{{ path('app_vehicule_new') }}">Ajouter</a>
+	{% for message in app.flashes('info') %}
+		<div class="alert alert-success">
+			{{message}}
+		{% endfor %}
+		{% for message in app.flashes('del') %}
+			<div class="alert alert-danger">
+				{{message}}
+			{% endfor %}
+			{% for message in app.flashes('mod') %}
+				<div class="alert alert-warning">
+					{{message}}
+				{% endfor %}
+			{% endblock %}

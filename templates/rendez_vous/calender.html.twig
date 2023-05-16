@@ -1,0 +1,84 @@
+{% extends 'employefront.html.twig' %}
+
+
+
+    
+{% block body %}
+<style>
+    .calendar-container {
+        width: 1200px;
+        height: 1500px;
+        margin: 0 auto;
+        border: 50px solid white;
+    }
+  </style>
+    <table>
+    <tr>
+      <td style="text-align: center; vertical-align: middle; border: 10px solid white; padding: 20px;">
+
+        <div class="calendar-container">
+           <div id="calendar-holder"></div>
+            {# {% for date, appointmentsByDate in appointmentsByDate %}
+        <h2>{{ date }}</h2>
+        {% if appointmentsByDate.appointments|length %}
+            <ul>
+            {% for appointment in appointmentsByDate.appointments %}
+                <li>{{ appointment.title }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No appointments</p>
+        {% endif %}
+        <p>{{ appointmentsByDate.appointmentCount }} appointments on this date</p>
+    {% endfor %} #}
+        </div> 
+
+      </td>
+    </tr>
+  </table>
+  {% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.css">
+  {% endblock %}
+
+  {% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.js"></script>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+            var calendarEl = document.getElementById('calendar-holder');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                defaultView: 'dayGridMonth',
+                eventSources: [
+                    {
+                        url: "{{ path('fc_load_events') }}",
+                        method: "POST",
+                        extraParams: {
+                            filters: JSON.stringify({})
+                        },
+                        failure: () => {
+                            // alert("There was an error while fetching FullCalendar!");
+                        },
+                    },
+                ],
+                
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay',
+                },
+                plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
+                timeZone: 'UTC',
+            
+                events : {{ data|raw }}
+            });
+            calendar.render();
+        });
+    </script>
+  {% endblock %}
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}List_Reclamation {% endblock %}
+
+{% block body %}
+
+{% for message in app.flashes('info')%}
+<div class="alert alert-success">
+{{message}}
+</div>
+  {% endfor %}
+
+  {% for message in app.flashes('erreur')%}
+<div class="alert alert-error" style="background:red;">
+{{message}}
+</div>
+  {% endfor %}
+
+
+  <div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                </ol>
+            </nav>
+        </div>
+    <div class="row ">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <div style="display: flex">
+                        <div class="col-md-5">
+                        </div>
+                        <form method="post" class="forms-sample" style="margin-left: -42px ;margin-top:20px;" >
+                            <div class="form-group col-md-4" style="display: flex; width: 100%!important; margin: 0px!important;">
+
+                                <div class="form-check">
+                                    <label class="form-check-label" style="width: 92px;margin-left: -2px;margin-right: 10px;">
+                                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="nom">nom</label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label" style="width: 86px;margin-left: -2px;margin-right: 10px;">
+                                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="date" >date</label>
+                                </div>
+
+                                <button type="Submit" class="btn btn-success btn-fw" style="margin: auto; background-color:#009cff; ">Trier</button>
+                            </div>
+                        </form>
+
+                    </div>
+                    <br>
+                    
+<div class="col-lg-17">
+ <div class="card">
+ <div class="card-body">
+ <ul class="navbar-nav w-100" style="margin-top: 15px;">
+                <ul class="navbar-nav w-100" style="margin-top:3px;">
+                        <li class="nav-item w-100">
+                
+            <div class="row" style="display: flex;align-items: center;justify-content: center;margin-top :40px">
+ 
+                            <form name="Search-method" id="Search-method"method="post" class="forms-sample" style="display: flex">
+                                <div class="form-group col-md-5">
+                                    <label style="margin-top: 11px;margin-left: 10px;margin-right: 14px;padding-bottom: 7px;;">Option Recherche</label>
+                                    <select name="optionsearch" class="js-example-basic-single" style="width: 200px;height: 38px; color: white; background-color: #009CFF; border-radius: 4px;text-align: center;border: 2px solid #0090e7;margin-right: 15px;">
+                                        <option value="">Choisi un Critére</option>
+                                        <option value="nom">nom</option>
+                                        <option value="prenom">prenom</option>
+                                    
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-7">
+                                    <div class="input-group">
+                                        <input name="Search" type="text" class="form-control" placeholder="Recherche" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-sm btn-primary" type="Submit">Chercher</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+    
+    <br>
+<br>
+<br>
+<br>
+<center>
+<h1>Reclamations</h1>
+</center>
+<br>
+<br>
+             <a class="btn btn-danger"href="{{ path('app_reclamation_listr') }}">pdf</a>
+              <a class="btn btn-danger"href="{{ path('app_reclamation_statisreclamation') }}">Statistique</a>
+
+
+    <table class="table" >
+        <thead>
+       
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Tel</th>
+                <th>Etat</th>
+                <th>Description</th>
+                <th>Date_reclamation</th>
+                <th>Type</th>
+                 <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td>{{ reclamation.id }}</td>
+                <td>{{ reclamation.nom }}</td>
+                <td>{{ reclamation.prenom }}</td>
+                <td>{{ reclamation.email }}</td>
+                <td>{{ reclamation.tel }}</td>
+                <td>{{ reclamation.etat }}</td>
+                <td>{{ reclamation.description }}</td>
+                <td>{{ reclamation.dateReclamation ? reclamation.dateReclamation|date('Y-m-d') : '' }}</td>
+                <td>{{ reclamation.type }}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('app_reclamation_show', {'id': reclamation.id}) }}">Afficher</a>
+                    <a class="btn btn-danger"href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}">Modifier</a>
+
+                </td>
+                
+
+            </tr>
+        
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+         
+    </table>
+   
+{% endblock %}

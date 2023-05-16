@@ -1,0 +1,34 @@
+
+
+
+
+
+{% block body %}
+    
+    <br>
+<br>
+<br>
+<br>
+<center>
+<h1 align="center" >Categories</h1>
+</center>
+<br>
+<br>
+
+    <table class="table" align="center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                
+                <th>labelcat</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <td scope="row">{{categorie.id}}</td>
+      <td>{{categorie.labelcat}}</td>
+   
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

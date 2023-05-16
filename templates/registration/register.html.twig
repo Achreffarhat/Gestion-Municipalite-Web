@@ -1,0 +1,71 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}{% endblock %}
+{% block head %}
+	<style>
+		h1 {
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 2.5rem;
+			margin-bottom: 2rem;
+		}
+
+		h3 {
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 1.0rem;
+			margin-bottom: 2rem;
+		}
+
+		label {
+			display: block;
+			font-size: 1.2rem;
+			margin-bottom: 0.5rem;
+			margin-left:10rem;
+		}
+
+		input[type="text"],
+		input[type="email"],
+		input[type="tel"],
+		input[type="password"] {
+			border: 1px solid #ddd;
+			font-size: 1.2rem;
+			padding: 0.5rem;
+			width: 80%;
+			margin-left:10rem;
+		}
+
+		select {
+			border: 1px solid #ddd;
+			font-size: 1.2rem;
+			padding: 0.5rem;
+			width: 100%;
+
+		}
+
+		button[type="submit"] {
+			background-color: #007bff;
+			border: none;
+			border-radius: 0.25rem;
+			color: #fff;
+			cursor: pointer;
+			font-size: 1rem;
+			padding: 0.5rem 1rem;
+			text-transform: uppercase;
+			margin-left: 40rem;
+		}
+
+		button[type="submit"]:hover {
+			background-color: #0069d9;
+		}
+	</style>
+	<center><img src="{{ asset('img/header.jpg') }}" alt="Header Image" class="img-fluid" height="120px"></center>
+	<center><h1>Inscrivez-vous</h1></center>
+{% endblock %}
+{% block body %}
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+	{{ form(registrationForm) }}
+	<center><h3>do you already have an email?<a href="{{ path('app_login') }}">click here login</a></h3><center>
+{% endblock %}

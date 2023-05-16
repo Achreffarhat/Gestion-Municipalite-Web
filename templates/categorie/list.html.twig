@@ -1,0 +1,52 @@
+
+{% extends 'baseback.html.twig' %}
+
+    {% block body %}
+<div class="container">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<center>
+<h1> Liste des Categories</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">labelcat</th>
+      
+      <th scope="col"> </th>
+      <th scope="col"> </th>
+    <td>  <a class="btn btn-sm btn-success" href="{{ path('app_reclamation_PDF')}}">pdf</a></td>
+
+    </tr>
+  </thead>
+  <tbody>
+  {%  for a in  a %}
+    <tr>
+      <td scope="row">{{a.id}}</td>
+      <td>{{a.labelcat}}</td>
+   
+         <td>  <a class="btn btn-sm btn-success" href="{{ path('modifiercat', {id:a.id})}}">Modifier</a></td>
+      <td>  <a class="btn btn-sm btn-danger" href="{{ path('supp_cat', {id:a.id}) }}">Supprimer</a></td>
+   
+
+    </tr>
+ 
+    {%  endfor %}
+  </tbody>
+</table>
+ <form action="{{ path('addcat') }}">
+    <button class="btn btn-round btn-facebook">Ajouter</button>
+</form> 
+</center>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'basefront.html.twig' %}
+
+{% block title %}New Avis{% endblock %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+<center>
+<h1>Ajouter Un Avis </h1>
+</center>
+<br>
+<br>
+    
+    <h1>Create new Avis</h1>
+{% for type, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ type }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+    {{ include('avis/_form.html.twig') }}
+
+    <a href="{{ path('app_avis_listavis') }}">liste Avis </a>
+    </center>
+{% endblock %}

@@ -1,0 +1,55 @@
+/* Centrer le formulaire */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  /* Changer la couleur de fond du formulaire */
+  form {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  button[type="submit"] {
+    background-color: #007bff;
+    border: none;
+    border-radius: 0.25rem;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    margin-top: 5rem;
+}
+
+button[type="submit"]:hover {
+    background-color: #0069d9;
+}
+  
+  /* Centrer l'image du header */
+  img {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  
+  /* Ajouter une ombre au formulaire */
+  form {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
+    border: 1px solid #ddd;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    width: 50%;
+}

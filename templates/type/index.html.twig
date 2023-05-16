@@ -1,0 +1,45 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}les Types des Reclamation{% endblock %}
+
+{% block body %}
+   
+<br>
+<br>
+<br>
+<br>
+<center>
+<h1>Les Types Reclamations</h1>
+</center>
+<br>
+<br>
+  
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type in types %}
+            <tr>
+                <td>{{ type.id }}</td>
+                <td>{{ type.type }}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('app_type_show', {'id': type.id}) }}">Afficher</a>
+                    <a class="btn btn-success" href="{{ path('app_type_edit', {'id': type.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary " href="{{ path('app_type_new') }}">Ajouter</a>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'baseback.html.twig'%}
+{% block title %} Outils {% endblock %}
+
+{% block body %}
+    <h1>Outils</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ outil.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom outil</th>
+                <td>{{ outil.labelOutils }}</td>
+            </tr>
+            <tr>
+                <th>Quantite</th>
+                <td>{{ outil.quantite }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><img id="img"  class="card-img-top img-fluid" style="height: 150px; width:250px;" src="/uploads/{{outil.image}}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+     <a class="btn btn-success" href="{{ path('app_outils_edit', {'id': outil.id}) }}">edit</a>
+
+    <a class="btn" href="{{ path('app_outils_index') }}">back to list</a>
+
+   
+
+   
+{% endblock %}

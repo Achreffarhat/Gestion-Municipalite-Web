@@ -1,0 +1,85 @@
+{% block title %}{% endblock %}
+{% block head %}
+	<style>
+    /* Style for the page title */
+	h1 {
+	  font-size: 2rem;
+	  font-weight: bold;
+	  margin-bottom: 1rem;
+      position: center;
+	}
+	
+	/* Style for the form container */
+	form {
+	  max-width: 400px;
+	  margin: 0 auto;
+	}
+	
+	/* Style for the form inputs */
+	input[type="email"] {
+	  display: block;
+	  width: 100%;
+	  padding: 0.5rem;
+	  margin-bottom: 1rem;
+	  font-size: 1rem;
+	  border: 1px solid #ced4da;
+	  border-radius: 0.25rem;
+	}
+	
+	/* Style for the small text under the email input */
+	small {
+	  display: block;
+	  margin-top: 0.5rem;
+	  font-size: 0.875rem;
+	  color: #6c757d;
+	}
+	
+	/* Style for the button */
+	button {
+	  display: block;
+	  margin-top: 1rem;
+	  padding: 0.5rem 1rem;
+	  font-size: 1rem;
+	  font-weight: bold;
+	  color: #fff;
+	  background-color: #007bff;
+	  border: none;
+	  border-radius: 0.25rem;
+	  cursor: pointer;
+	}
+	
+	/* Style for the danger alert */
+	.alert-danger {
+	  color: #721c24;
+	  background-color: #f8d7da;
+	  border-color: #f5c6cb;
+	  padding: 0.5rem;
+	  margin-bottom: 1rem;
+	  border-radius: 0.25rem;
+	}
+</style>
+<center><img src="{{ asset('img/header.jpg') }}" alt="Header Image" class="img-fluid" height="120px"></center>
+<center><h1>Réinitialisez votre mot de passe</h1><center>
+{% endblock %}
+{% block body %}
+	{% for flash_error in app.flashes('reset_password_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+    <br>
+    <br>
+    <br>
+    <br>
+	
+
+	{{ form_start(requestForm) }}
+	{{ form_row(requestForm.email) }}
+	<div>
+		<small>
+			Entrez votre adresse e-mail et nous vous enverrons un
+lien pour réinitialiser votre mot de passe.
+		</small>
+	</div>
+
+	<button class="btn btn-primary">Envoyer</button>
+	{{ form_end(requestForm) }}
+{% endblock %}

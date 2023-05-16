@@ -1,0 +1,25 @@
+<div class="container"> 
+{{ form_start(form) }}
+<div class="form-group"> 
+    {{ form_label(form.description)}}
+    {{ form_widget(form.description,{'attr':{'classe':'form-control'}}) }}
+    {% if form_errors(form.description) is not empty %}
+    <div class="alert alert-danger">
+    {{ form_errors(form.description) }}
+</div>
+{% endif %}
+</div>
+<div class="form-group"> 
+    {{ form_label(form.date_ren, "Date de Rendez-Vous")}}
+    {{ form_widget(form.date_ren,{'attr':{'classe':'form-control'}}) }}
+    {% if form_errors(form.date_ren) is not empty %}
+    <div class="alert alert-danger">
+    {{ form_errors(form.date_ren) }}
+</div>
+{% endif %}
+</div>
+
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+

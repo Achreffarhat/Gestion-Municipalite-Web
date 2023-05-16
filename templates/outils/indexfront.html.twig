@@ -1,0 +1,69 @@
+{% extends 'employefront.html.twig'%}
+
+{% block title %}Outils
+{% endblock %}
+{% block body %}
+
+   
+      
+    </div>
+<style>
+		.wrapper{
+			width:100px;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-auto-rows: auto;
+			grid-gap: 10px;	
+			
+		}
+		p{
+				font-size:16px;
+			}
+		
+	</style>
+	<div class="wrapper">
+
+		{% for outil in outils %}
+		
+			<div class="card" style="width: 20rem;">
+            <div class="position-relative">
+									<img class="card-img-top" style="height: 200px; width:300px;" src="{{asset('uploads/') ~ outil.image}}" alt="Card image cap">
+									
+								</div>
+				
+				 <div class="card-body">
+				 <h4 class="card-title">Quantite: {{ outil.quantite }}</h4>
+				<p class="description">Nom Outil: {{ outil.labelOutils }} </p>
+				
+
+
+				
+				
+    
+				</div>
+              <a class="stretched-link" href="{{ path('app_reservation_new' ,{'id': outil.id}) }}"></a>
+			</div>
+
+		{% else %}
+				<div colspan="4">no records found</div>
+		{% endfor %}
+
+	</div>
+
+	
+
+</div>
+
+	{# </div>
+
+      <div class="pagination " text-align: "center" >
+    {{ knp_pagination_render(  outils) }}
+
+     </div> #}
+	
+       <div class="d-flex justify-content-center">
+  {% do outils.SetPageRange(4) %}
+  {{ knp_pagination_render(outils, "outils/pagination.html.twig") }}
+</div>
+ 
+{% endblock %}

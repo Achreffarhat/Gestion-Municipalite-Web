@@ -1,0 +1,47 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Avis {% endblock %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+<center>
+    <h1>Avis</h1>
+</center>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Rating</th>
+                <th>Commentaire</th>
+                <th>Titre</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for avi in avis %}
+            <tr>
+                <td>{{ avi.id }}</td>
+                <td> {% include 'avis/rating.html.twig' with { 'rating': avi.rating } %}</td>     
+                <td>{{ avi.commentaire }}</td>
+                <td>{{ avi.titre }}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('app_avis_show', {'id': avi.id}) }}">show</a>
+                     
+                </td>
+            </tr>
+            
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+                     <div class="navigation" style="color:red;font-size:30px">{{ knp_pagination_render(avis) }}</div> 
+                    </div>
+   
+{% endblock %}

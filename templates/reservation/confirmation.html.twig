@@ -1,0 +1,37 @@
+{% extends 'employefront.html.twig'%}
+{% block body %}
+
+	<style>
+.example-wrapper {
+	
+	max-width: 600px;
+	width: 95%;
+	font: 18px / 1.5 sans-serif;
+    margin: auto ;
+}
+
+
+		</style>
+ 
+	
+
+	<div class="example-wrapper">
+			<div class="card" style="width: 35rem;">
+            <div class="position-relative">
+									
+									 <h1>Reservation </h1>
+
+   <h2> Votre reservation est en cours de traitement</h2>
+   <h3> Merci pour votre patient </h3> 
+								</div>
+	</div>
+
+	
+<a class="btn btn-dark" href="{{ path('app_outils_indexfront') }}">back to outils</a>
+</div>
+   
+
+    
+
+    
+{% endblock %}

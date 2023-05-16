@@ -1,0 +1,32 @@
+{% extends 'back/index.html.twig' %}
+
+
+{% block body %}
+    <h1>RendezVous index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Date_ren</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rendez_vou in rendez_vouses %}
+            <tr>
+                <td>{{ rendez_vou.id }}</td>
+                <td>{{ rendez_vou.description }}</td>
+                <td>{{ rendez_vou.dateRen ? rendez_vou.dateRen|date('Y-m-d') : '' }}</td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

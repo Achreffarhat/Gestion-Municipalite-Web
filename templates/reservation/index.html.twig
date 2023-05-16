@@ -1,0 +1,49 @@
+{% extends 'baseback.html.twig'%}
+{% block title%} Reservation {%endblock%}
+
+{% block body %}
+    <h1>Reservation </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id.Reservation</th>
+                <th>Date_debut</th>
+                <th>Date_fin</th>
+                <th>Quantite</th>
+                <th>Nom Outil</th>
+                <th>etat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.dateDebut ? reservation.dateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation.dateFin ? reservation.dateFin|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation.quantite }}</td>
+                 <td>{{ reservation.outil.labelOutils }}</td>
+                 <td>{{ reservation.etat }}</td>
+                <td>
+                
+
+                    <a class="btn" href="{{ path('app_reservation_show', {'id': reservation.id}) }}">show</a>
+                    <a class="btn btn-success" href="{{ path('app_reservation_edit', {'id': reservation.id}) }}">Confimer Reservation</a>
+                    <form method="post" action="{{ path('app_reservation_delete', {'id': reservation.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reservation.id) }}">
+    <button class="btn btn-danger">annuler Reservation</button>
+    <a class="btn" href="{{ path('reservation_pdf', {'id': reservation.id}) }}">pdf</a>
+</form> 
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('app_reservation_new') }}">Create new</a> #}
+{% endblock %}

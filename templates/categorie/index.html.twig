@@ -1,0 +1,22 @@
+{% extends 'baseback.html.twig' %}
+
+    {% block body %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+<center>
+<div>
+{{form_start(a,{'attr': {'novalidate': 'novalidate'}})}}
+{{form_widget(a)}}
+    {{ form_errors(a) }}
+
+<button type="submit" class="btn btn-round btn-facebook">Ajouter</button>
+{{form_end(a)}}
+</div>
+</center>
+</div>
+{% endblock %}

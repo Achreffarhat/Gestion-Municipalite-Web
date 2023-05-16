@@ -1,0 +1,23 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Edit Reclamation{% endblock %}
+
+{% block body %}
+   
+    <br>
+<br>
+<br>
+<br>
+<center>
+<h1>Modifier Reclamations</h1>
+</center>
+<br>
+<br>
+
+    {{ include('reclamation/_form.html.twig', {'button_label': 'Update'}) }}
+ 
+
+    <a class="btn btn-success" href="{{ path('app_reclamation_index') }}"> liste Reclamation </a>
+
+    {{ include('reclamation/_delete_form.html.twig') }}
+{% endblock %}

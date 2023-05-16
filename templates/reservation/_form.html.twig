@@ -1,0 +1,24 @@
+{# {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }} #}
+
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+{{ form_label(form.date_debut,"Date Debut") }} 
+    {{ form_widget(form.date_debut,{'attr': {'class':'form-control'}}) }} 
+     {{ form_errors(form.date_debut) }} 
+
+{{ form_label(form.date_fin,"Date fin") }} 
+    {{ form_widget(form.date_fin,{'attr': {'class':'form-control'}}) }} 
+     {{ form_errors(form.date_fin) }}
+     
+     {{ form_label(form.quantite,"Quantite") }} 
+    {{ form_widget(form.quantite,{'attr': {'class':'form-control'}}) }} 
+     {{ form_errors(form.quantite) }}  
+
+         {{ form_label(form.outil,"Outils") }} 
+    {{ form_widget(form.outil,{'attr': {'class':'form-control'}}) }} 
+     {{ form_errors(form.outil) }}  
+    
+  <button class="btn btn-dark">{{ button_label|default('Reserve') }}</button> 
+{{ form_end(form) }}

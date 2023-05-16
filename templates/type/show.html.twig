@@ -1,0 +1,36 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Type{% endblock %}
+
+{% block body %}
+  
+       
+<br>
+<br>
+<br>
+<br>
+<center>
+<h1>Les Types Des Reclamations</h1>
+</center>
+<br>
+<br>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ type.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ type.type }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('app_type_index') }}"> liste Types </a>
+
+    <a class="btn btn-success" href="{{ path('app_type_edit', {'id': type.id}) }}">Modifier</a>
+
+    {{ include('type/_delete_form.html.twig') }}
+{% endblock %}
